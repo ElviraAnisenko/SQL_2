@@ -68,7 +68,7 @@ public class ApiTest {
 
 
     }
-   // @Order(3)
+
     @Test
     public void requestForViewingCard() {
         requestForVerification();
@@ -132,8 +132,6 @@ public class ApiTest {
         int expectedBalanceFirstCard = firstCardBalance;
         int expectedBalanceSecondCard = secondCardBalance;
         requestForViewingCard();
-        //assertThat(firstCardBalance, equalTo(expectedBalanceFirstCard));
-        //assertThat(secondCardBalance, equalTo(expectedBalanceSecondCard));
         assertAll(() -> assertThat(firstCardBalance, equalTo(expectedBalanceFirstCard)),
                 () -> assertThat(secondCardBalance, equalTo(expectedBalanceSecondCard)));
 
