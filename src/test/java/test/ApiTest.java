@@ -68,10 +68,9 @@ public class ApiTest {
 
 
     }
-    @Order(3)
+   // @Order(3)
     @Test
     public void requestForViewingCard() {
-
         requestForVerification();
         Response response =
                 given()
@@ -88,7 +87,7 @@ public class ApiTest {
         secondCardBalance = response.path("[0].balance");
     }
 
-    @Order(4)
+
     @Test
     public void requestForValidTransferMoney() {
         requestForViewingCard();
@@ -113,7 +112,7 @@ public class ApiTest {
 
     }
 
-    @Order(5)
+
     @Test
     public void requestForInvalidTransferMoney() {
         requestForViewingCard();
