@@ -78,7 +78,6 @@ public class ApiTest {
     @Test
     public void requestForInvalidTransferMoneyToUnknownCard() {
         APIHelper.requestForViewingCard();
-        //var firstCard = DataHelper.getfirstcard().getCardNumber();
         var secondCard = DataHelper.getsecondcard().getCardNumber();
         int amount = DataHelper.generateValidAmount(APIHelper.getSecondCardBalance());
         var transfer = DataHelper.getTransfer(secondCard, "", amount);
