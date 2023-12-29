@@ -31,7 +31,7 @@ public class SQLHelper {
     public static void cleanDatabase() {
         var conn = getConn();
         runner.execute(conn, "DELETE FROM auth_codes");
-        // runner.execute(conn,"DELETE FROM card_transaction");
+        runner.execute(conn,"DELETE FROM card_transaction");
         runner.execute(conn, "DELETE FROM cards");
         runner.execute(conn, "DELETE FROM users");
     }
