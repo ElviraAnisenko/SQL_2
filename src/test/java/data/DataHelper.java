@@ -66,4 +66,23 @@ public class DataHelper {
 
     }
 
+    public static StatusAndUrl getLogin() {
+        return new StatusAndUrl("/api/auth", 200);
+    }
+
+    public static StatusAndUrl getVerify() {
+        return new StatusAndUrl("/api/auth/verification", 200);
+    }
+
+    public static StatusAndUrl getViewCard() {
+        return new StatusAndUrl("/api/cards", 200);
+    }
+
+
+    @Value
+    public static class StatusAndUrl {
+        String endPoint;
+        int status;
+    }
+
 }
