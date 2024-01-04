@@ -78,6 +78,11 @@ public class DataHelper {
         return new StatusAndUrl("/api/cards", 200);
     }
 
+    public static StatusAndUrl getTransferMoney(int status) {
+        return new StatusAndUrl("/api/transfer", status);
+    }
+
+
 
     @Value
     public static class StatusAndUrl {

@@ -72,10 +72,21 @@ public class APIHelper {
                         .get(endPointAndStatus.getEndPoint())
                         .then()
                         .statusCode(endPointAndStatus.getStatus())
-                        .extract().response();
+                        .extract()
+                        .response();
         firstCardBalance = response.path("[1].balance");
         secondCardBalance = response.path("[0].balance");
     }
 
+    public static void requestForTransferMoney(DataHelper.Transfer transfer, DataHelper.StatusAndUrl statusAndUrl) {
+        given()
+                .spec(APIHelper.getRequestSpec())
+                .header("Authorization", "Bearer " + token)
+                .body(transfer)
+                .when()
+                .post(statusAndUrl.getEndPoint())
+                .then()
+                .statusCode(statusAndUrl.getStatus());
+    }
 
 }

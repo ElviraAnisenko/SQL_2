@@ -35,14 +35,8 @@ public class ApiTest {
         var secondCard = DataHelper.getsecondcard().getCardNumber();
         int amount = DataHelper.generateValidAmount(APIHelper.getFirstCardBalance());
         var transfer = DataHelper.getTransfer(firstCard, secondCard, amount);
-        given()
-                .spec(APIHelper.getRequestSpec())
-                .header("Authorization", "Bearer " + APIHelper.getToken())
-                .body(transfer)
-                .when()
-                .post("/api/transfer")
-                .then()
-                .statusCode(200);
+        var endPointAndUrl=DataHelper.getTransferMoney(200);
+        APIHelper.requestForTransferMoney(transfer,endPointAndUrl);
         int expectedBalanceFirstCard = APIHelper.getFirstCardBalance() - amount;
         int expectedBalanceSecondCard = APIHelper.getSecondCardBalance() + amount;
         APIHelper.requestForViewingCard();
@@ -59,14 +53,8 @@ public class ApiTest {
         var secondCard = DataHelper.getsecondcard().getCardNumber();
         int amount = DataHelper.generateInValidAmount(APIHelper.getFirstCardBalance());
         var transfer = DataHelper.getTransfer(firstCard, secondCard, amount);
-        given()
-                .spec(APIHelper.getRequestSpec())
-                .header("Authorization", "Bearer " + APIHelper.getToken())
-                .body(transfer)
-                .when()
-                .post("/api/transfer")
-                .then()
-                .statusCode(400);
+        var endPointAndUrl=DataHelper.getTransferMoney(400);
+        APIHelper.requestForTransferMoney(transfer,endPointAndUrl);
         int expectedBalanceFirstCard = APIHelper.getFirstCardBalance();
         int expectedBalanceSecondCard = APIHelper.getSecondCardBalance();
         APIHelper.requestForViewingCard();
@@ -81,14 +69,8 @@ public class ApiTest {
         var secondCard = DataHelper.getsecondcard().getCardNumber();
         int amount = DataHelper.generateValidAmount(APIHelper.getSecondCardBalance());
         var transfer = DataHelper.getTransfer(secondCard, "", amount);
-        given()
-                .spec(APIHelper.getRequestSpec())
-                .header("Authorization", "Bearer " + APIHelper.getToken())
-                .body(transfer)
-                .when()
-                .post("/api/transfer")
-                .then()
-                .statusCode(400);
+        var endPointAndUrl=DataHelper.getTransferMoney(400);
+        APIHelper.requestForTransferMoney(transfer,endPointAndUrl);
         int expectedBalanceFirstCard = APIHelper.getFirstCardBalance();
         int expectedBalanceSecondCard = APIHelper.getSecondCardBalance();
         APIHelper.requestForViewingCard();
